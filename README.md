@@ -48,8 +48,8 @@ The goals / steps of this project are the following:
 #### 1.1 Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
 This document contains the project writeup. Other project artifacts:
-* [Project code](https://github.com/rstanchak/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb) 
-* [Project code](https://github.com/rstanchak/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.html)
+* [Project notebook](https://github.com/rstanchak/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb) 
+* [Project notebook (html)](https://github.com/rstanchak/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.html)
 
 ### 2. Data Set Summary & Exploration
 
@@ -116,7 +116,7 @@ The table below breaks down the number training examples by class.
 
 #### 2.2. Include an exploratory visualization of the dataset and identify where the code is in your code file.
 
-The code for this step is contained in the third code cell of the IPython notebook.  
+The code for this step is contained in the third and fourth code cells of the IPython notebook.
 
 Here is an exploratory visualization of the data set. It is a bar chart showing the distribution of the training data among the classes.
 
@@ -130,7 +130,7 @@ Here is another exploratory visualization of the data set.  This shows 10 random
 
 #### 3.1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.
 
-The code for this step is contained in the fourth code cell of the IPython notebook.
+The code for this step is contained in the fifth code cell of the IPython notebook.
 
 To pre-process my image data, I centered and normalized the data, first by shifting the data by the average of each color channel of the training data, then by scaling from a [-127,127] range to [-1,1].  I chose to do this because it was discussed in the LeNet paper, the lecture videos and some Stanford lecture slides another student referenced (http://cs231n.stanford.edu/slides/2016/winter1516_lecture5.pdf). 
 
@@ -142,6 +142,10 @@ Viewing the color channels separately looks like an average of the triangular an
 
 ![alt text][image13]
 
+Here is the preprocessed training data.
+
+![alt text][image15]
+
 #### 3.2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
 
 The train, test, and validation sets were used as provided.  No data augmentation or train/validation mixing was done.
@@ -150,7 +154,7 @@ I chose not to augment my dataset because of time constraints.
 
 #### 3.3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
-The code for my final model is located in the seventh cell of the ipython notebook. 
+The code for my final model is located in the 10th code cell of the ipython notebook. 
 
 My final model consisted of the following layers:
 
@@ -178,7 +182,7 @@ classification
 
 #### 3.4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-The code for training the model is located in the eigth cell of the ipython notebook. 
+The code for training the model is located in the 11th code cell of the ipython notebook. 
 
 To train the model, I retained the same approach as the LeNet lab.
 * Optimizer: AdamOptimizer
@@ -190,7 +194,7 @@ To train the model, I retained the same approach as the LeNet lab.
 
 #### 3.5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
-The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
+The code for calculating the accuracy of the model is located in the 12th cell of the Ipython notebook.
 
 My approach for finding a solution was to port the LeNet lab example code and tutorial video and determine a baseline solution, and then apply some of the techniques discussed in lectures and in referenced literature to see what improved the accuracy.
 
@@ -205,6 +209,8 @@ I implemented the following adjustments:
 * Increased number of features in conv layers.  With training and validation accuracy still stuck at less than 93%, I referred to the architecture from the LeNet paper and noted that the minimum conv features used were 38 in the first layer and 64 in the second layer.  So to start, I bumped up my first and second layers to 36 and 64 features, respectively.  This resulted in a marked jump in the training accuracy, which was now well above the 93% benchmark.  The validation accuracy was around 91%.
 * Increased Epochs to 30.   This was done because training and validation accuracy were continuing to improve after the first 10 epochs.  This resulted in the training accuracy continuing to improve, but the validation accuracy plateaued around 91%.
 * Introduced dropout layer.  This was done because the training accuracy after 30 epochs was above 99%, but the validation accuracy was stuck around 91%, which I took as evidence that the network was overfitting.  The result after 30 epochs, is that the training set accuracy was 99.6% and the validation set accuracy was 95.3%.  The benchmark of 93% validation accuracy had been attained.
+
+Unfortunately, due to external time constaints, I was not able to further investigate other optimizations so this was the final model.
 
 My final model results were:
 * training set accuracy of 99.6%
@@ -230,7 +236,7 @@ Here are seven German traffic signs that I found on the web:
 
 #### 4.2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
-The code for making predictions on my final model is located in the tenth cell of the Ipython notebook.
+The code for making predictions on my final model is located in the 15th cell of the Ipython notebook.
 
 Here are the results of the prediction:
 
@@ -238,8 +244,8 @@ Here are the results of the prediction:
 | # | Image	| Label	| Prediction |
 |:--:|:------:|:----|:-----------|
 | 1 | ![alt text][image4] | Speed limit (70km/h) | Speed limit 30 km/h |
-| 2 | ![alt text][image5]  |Priority Road | Priority Road |
-| 3 | ![alt text][image6] |Stop | Stop |
+| 2 | ![alt text][image5] | Priority Road | Priority Road |
+| 3 | ![alt text][image6] | Stop | Stop |
 | 4 | ![alt text][image7] | Turn Right Ahead | Turn Right Ahead |
 | 5 | ![alt text][image8] | Pedestrians | Speed limit 70km/h  |
 | 6 | ![alt text][image9] | Go Straight or Left | Go Straight or Left |
@@ -250,7 +256,7 @@ The model was able to correctly guess 4 of the 7 traffic signs, which gives an a
 
 #### 4.3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+The code for making predictions on my final model is located in the 16th cell of the Ipython notebook.
 
 1 ![alt text][image4] Speed limit (70km/h)
 
