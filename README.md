@@ -67,6 +67,7 @@ signs data set:
 * Number of validation examples = 4410
 
 The table below breaks down the number training examples by class.  
+
 | Class | Count | Class Name |
 |:-----:|:-----:|:-----------|
 | 0 | 	 180 	|Speed limit (20km/h) |
